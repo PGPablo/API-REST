@@ -1,0 +1,14 @@
+{
+  "name": "api-rest",
+  "version": "1.0.0",
+  "description": "Proyecto de ingenieria de software API RESTful con Node.js y express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Los Pinguinos de madagascar",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
