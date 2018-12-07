@@ -11,14 +11,30 @@ const app = express()
 const port = process.env.PORT || 3001
 
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.get('/api/product',(req, res)=>{
-	res.send(200, {products: []})
+
+	Product.find({},(err, products)=> {
+		if (err) res.status(500).send({message: `Error al realizar la peticion: ${err}`})
+			if (!product) return res.status(484).send ({message: `No existen productos`})
+
+      res.send(200).send({products})
+	})
 	
 })
 app.get('/api/product/:productId',(req, res)=>{
+	let productId = req.params.productId
+
+
+	Product.findById(productId, (err, product) =>{
+		if (err) res.status(500).send({message: `Error al realizar la peticion: ${err}`})
+			if (!product) return res.status(484).send ({message: `El producto no existe`})
+
+
+				res.status(200).send({product})
+	})
 })
 
 app.post('/api/product',(req, res)=> {
@@ -28,16 +44,16 @@ app.post('/api/product',(req, res)=> {
 
 	let product = new Product()
 
-	product.name= req.body.name
-	product.picture = req.body.picture
-		product.price = req.body.price
+	product.name = req.body.name
+	product.price = req.body.price
+		product.picture = req.body.picture
 		product.category = req.body.category
 		product.description = req.body.description
 
 
 
 	product.save((err, productStored)=> {
-		if (err) res.status(500).send ({menssage: `Error al guardar en la base de datps: ${err}`})
+		if (err) res.status(500).send ({message: `Error al guardar en la base de datps: ${err}`})
 			res.status (200).send({product: productStored})
 	})
 })
@@ -55,8 +71,7 @@ mongoose.connect('mongodb://localhost:27017/shop', (err, res)=> {
 	}
 
 		console.log('Conexion a la base de datos establecida...')
-	}
-)
+	})
 
 
 app.listen(port, () => {

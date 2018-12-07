@@ -5,8 +5,8 @@ const Schema = mongoose.Schema
 
 const ProductSchema = Schema({
 	name: String,
-	picture: String, 
 	price: {type: Number, default: 0},
+	picture: String, 
 	category:{ type: String, enum: ['computers', 'phones', 'accesories' ]},
 	description: String
 
