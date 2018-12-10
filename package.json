@@ -1,20 +1,25 @@
 {
   "name": "api-rest",
   "version": "1.0.0",
-  "description": "Proyecto de ingenieria de software API RESTful con Node.js y express",
+  "description": "Proyecto de API RESTful con Node.js y Express",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Los Pinguinos de madagascar",
+  "author": "Carlos Azaustre (http://carlosazaustre.es)",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mongoose": "^5.3.15"
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "crypto": "0.0.3",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.16.0",
+    "mongoose": "^4.6.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.10.2"
   }
 }
